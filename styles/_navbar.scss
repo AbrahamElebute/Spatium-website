@@ -1,85 +1,58 @@
 @import "colors";
 @import "media-queries";
 
-.acti {
-  background:red;
-}
 .navbar__container {
-  z-index: 1;
-
-  width: 100%;
-  position: fixed;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  // padding: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-  &__logo {
-    width: 70px;
-  }
-
-  &__bars {
-    opacity: 0;
-    cursor: pointer;
-    @include tablet {
-      opacity: 1;
-      position: absolute;
-      top: 38px;
-      right: 20px;
-      font-size: 2rem;
-      background-color: $light;
-      height: 4px;
-      width: 30px;
-      border-radius: 20px;
-      &::after,
-      &::before {
-        transition: 1s;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top:10px ;
+    z-index: 1;
+    &__logo {
+        width: 60px;
       }
-      &::after {
-        content: "";
-        background-color: $light;
-
-        height: 4px;
-        width: 50%;
-        display: block;
-        position: absolute;
-        bottom: 8px;
-        border-radius: 20px;
-      }
-      &::before {
-        content: "";
-        background-color: $light;
-        height: 4px;
-        width: 100%;
-        display: block;
-        position: absolute;
-        bottom: -8px;
-        border-radius: 20px;
-      }
-
-      &:hover:before {
-        transform: translateY(-3px);
-      }
-      &:hover::after {
-        transform: translateY(3px);
-      }
-    }
-  }
-  .active {
-    transform: translateY(-11px) rotate(-45deg);
-    width: 300%;
-    background-color: yellow;
-
-    // &::after {
-    //   // opacity: 0;
-    // }
-    // &::before {
-    //   transform: translateY(-10px) rotate(263deg);
-    //   // width: 300%;
-    // }
-  }
+        &__bars {
+            opacity: 0;
+            cursor: pointer;
+            transition: 1s;
+            z-index: 1000;
+            @include tablet {
+              opacity: 1;
+              position: absolute;
+              top: 38px;
+              right: 20px;
+              font-size: 2rem;
+              background-color: $light;
+              height: 4px;
+              width: 30px;
+              border-radius: 20px;
+              &::after,
+              &::before {
+                content: "";
+                background-color:  $light;
+                height: 4px;
+                right: 0;
+                display: block;
+                position: absolute;
+                border-radius: 20px;
+                transition: 1s;
+              }
+              &::after {
+                width: 60%;
+                bottom: 8px;
+        
+              }
+              &::before {
+                width: 100%;
+                bottom: -8px;
+              }
+        
+            }
+          }
+  
   &__items ul {
     display: flex;
     justify-content: space-around;
@@ -195,8 +168,60 @@
       opacity: 1;
     }
     @include tablet {
-      display: none;
+      display: none; 
+
     }
   }
-}
+  .active {
+    transform: translateY(-11px) rotate(-45deg);
+    width: 300%;
+    background-color: yellow;
 
+    &::after {
+      opacity: 0;
+    }
+    &::before {
+      transform: translateY(-10px) rotate(263deg);
+      width: 300%;
+    }
+  }
+  }
+  .barsActive{
+      transform: rotate(45deg);
+      &::after{
+          opacity: 0;
+      }
+      &::before{
+      transform: rotate(274deg) translateX(8px);
+      }
+    
+  }
+  .navActive{
+   ul{
+    position: absolute;
+    right: 0px;
+    height: 100vh;
+    top: 8vh;
+    background-image: $linear-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* width: 50%; */
+    z-index: 10;
+    // transform: translateY();
+    transform: translateY(-68px);
+    animation:navFade 2s 1  ;
+    transition: transform 0.5s ease-in;
+    @keyframes navFade {
+        from {
+          transform: translate(100px,-68px);
+        }
+        to {
+          transform: translate(0px,-68px);
+        }
+      }
+   }
+  }
+  .acti {
+    background:$linear-color;
+  }
