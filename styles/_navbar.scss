@@ -1,0 +1,202 @@
+@import "colors";
+@import "media-queries";
+
+.acti {
+  background:red;
+}
+.navbar__container {
+  z-index: 1;
+
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  // padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  &__logo {
+    width: 70px;
+  }
+
+  &__bars {
+    opacity: 0;
+    cursor: pointer;
+    @include tablet {
+      opacity: 1;
+      position: absolute;
+      top: 38px;
+      right: 20px;
+      font-size: 2rem;
+      background-color: $light;
+      height: 4px;
+      width: 30px;
+      border-radius: 20px;
+      &::after,
+      &::before {
+        transition: 1s;
+      }
+      &::after {
+        content: "";
+        background-color: $light;
+
+        height: 4px;
+        width: 50%;
+        display: block;
+        position: absolute;
+        bottom: 8px;
+        border-radius: 20px;
+      }
+      &::before {
+        content: "";
+        background-color: $light;
+        height: 4px;
+        width: 100%;
+        display: block;
+        position: absolute;
+        bottom: -8px;
+        border-radius: 20px;
+      }
+
+      &:hover:before {
+        transform: translateY(-3px);
+      }
+      &:hover::after {
+        transform: translateY(3px);
+      }
+    }
+  }
+  .active {
+    transform: translateY(-11px) rotate(-45deg);
+    width: 300%;
+    background-color: yellow;
+
+    // &::after {
+    //   // opacity: 0;
+    // }
+    // &::before {
+    //   transform: translateY(-10px) rotate(263deg);
+    //   // width: 300%;
+    // }
+  }
+  &__items ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 450px;
+    max-width: 450px;
+    li {
+      list-style: none;
+      a {
+        text-decoration: none;
+        color: white;
+        font-size: 22px;
+        transition: 0.5s;
+        &::after {
+          content: "";
+          height: 2px;
+          width: 0%;
+          display: block;
+          background-color: white;
+          transition: 0.5s;
+        }
+        &:hover::after {
+          width: 100%;
+        }
+      }
+    }
+    & span {
+      background-image: linear-gradient(
+        338deg,
+        rgb(121, 0, 255) 20.64%,
+        rgb(84, 140, 255) 77.7%
+      );
+      padding: 10px;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 1s;
+  
+      a {
+        color: $dark;
+        text-decoration: none;
+        font-size: 22px;
+      }
+      &:hover {
+        animation: wobble-hor-bottom 0.8s both;
+        box-shadow: 0px 2px 5px 1px $dark;
+      }
+  
+      @-webkit-keyframes wobble-hor-bottom {
+        0%,
+        100% {
+          -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+          -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+        }
+        15% {
+          -webkit-transform: translateX(-30px) rotate(-6deg);
+          transform: translateX(-30px) rotate(-6deg);
+        }
+        30% {
+          -webkit-transform: translateX(15px) rotate(6deg);
+          transform: translateX(15px) rotate(6deg);
+        }
+        45% {
+          -webkit-transform: translateX(-15px) rotate(-3.6deg);
+          transform: translateX(-15px) rotate(-3.6deg);
+        }
+        60% {
+          -webkit-transform: translateX(9px) rotate(2.4deg);
+          transform: translateX(9px) rotate(2.4deg);
+        }
+        75% {
+          -webkit-transform: translateX(-6px) rotate(-1.2deg);
+          transform: translateX(-6px) rotate(-1.2deg);
+        }
+      }
+      @keyframes wobble-hor-bottom {
+        0%,
+        100% {
+          -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+          -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+        }
+        15% {
+          -webkit-transform: translateX(-30px) rotate(-6deg);
+          transform: translateX(-30px) rotate(-6deg);
+        }
+        30% {
+          -webkit-transform: translateX(15px) rotate(6deg);
+          transform: translateX(15px) rotate(6deg);
+        }
+        45% {
+          -webkit-transform: translateX(-15px) rotate(-3.6deg);
+          transform: translateX(-15px) rotate(-3.6deg);
+        }
+        60% {
+          -webkit-transform: translateX(9px) rotate(2.4deg);
+          transform: translateX(9px) rotate(2.4deg);
+        }
+        75% {
+          -webkit-transform: translateX(-6px) rotate(-1.2deg);
+          transform: translateX(-6px) rotate(-1.2deg);
+        }
+      }
+    }
+    &:hover li a {
+      color: gray;
+      opacity: 0.6;
+    }
+    li a:hover {
+      color: white;
+      opacity: 1;
+    }
+    @include tablet {
+      display: none;
+    }
+  }
+}
+
